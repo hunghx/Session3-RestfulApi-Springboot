@@ -1,0 +1,59 @@
+-- Thêm mới sản phẩm
+http://localhost:8080/myservice/product -- POST
+-- lấy thông tin sản phẩm theo id
+http://localhost:8080/myservice/product/{id} -- GET
+-- lấy thông tin  toàn bộ sản phẩm theo
+http://localhost:8080/myservice/product -- GET
+-- cập nhật thông tin sản phẩm theo id
+http://localhost:8080/myservice/product/{id} -- PUT
+-- Xóa sản phẩm  
+http://localhost:8080/myservice/product/{id} -- DELETE
+
+-- các mã trạng thái của HTTP Request và Response
+1xx: nhóm thông tin 
+2xx: nhóm thành công (200, 201 , 202,204)
+3xx: chuyển tiếp yêu cầu 
+4xx: lỗi phía máy khách (400, 401, 403, 404 , 405,415 )
+5xx: lỗi phía máy chủ (500)
+
+Bài 1 : Thiết kế RestFul Api CRUD
+
+• GET http://localhost:8080/api.myservice.com/v1/student/{id} -- lấy thông tin sinh viên theo id
+• GET http://localhost:8080/api.myservice.com/v1/students -- lấy về danh sach sinh viên
+• POST http://localhost:8080/api.myservice.com/v1/student -- thêm mới
+Content-Type:Application/json
+{"id":"0006","name":"Quicksilver","age":"3","point":"5"}
+
+• PUT http://localhost:8080/api.myservice.com/v1/student/{id}  -- chỉnh sửa
+Content-Type:Application/json
+{"id":"0006","name":"Quicksilver","age":"3","point":"5"}
+
+• DELETE http://localhost:8080/api.myservice.com/v1/student/{id} -- Xóa
+
+
+-- Sơ đồ quan hệ thực thể
+-- Đối tượng Account :
+	+ id
+	+ username
+	+ password
+	+ fullname
+	+ phone
+	+ address
+	+ roles
+-- Đối tượng Role 
+	+ id
+	+ roleName (enum)
+-- thực thể yếu (user_role)
+
+-- api đăng nhập : data (username, password) ->fail: 401 sai username hoặc password
+					     ->success : {username, fullname, token}
+-- api đăng kí : (username, password, phone, address,fullname,[roles]) -> fail -> 400 -> đăng kí thất bại
+								       -> success-> 201 -> đăng kí thành công
+
+-- api thêm 1 quyền cho người dùng -> success -> 200 thêm thành công
+		
+-- api xóa 1 quyền của người dùng -> success> 200 xóa thành công
+
+-- api lấy về danh sách người dùng (id, username, fullname, phone, address, roles)
+
+-- api lấy về thông tin người dùng theo id (id, username, fullname, phone, address, roles)
