@@ -30,16 +30,16 @@ public class AccountController {
     }
     @GetMapping
     public String test(){
-        Role admin  = new Role(null, RoleName.ROLE_ADMIN);
-        Role pm  = new Role(null, RoleName.ROLE_PM);
-        Role user  = new Role(null, RoleName.ROLE_USER);
-
-        Account acc1 = new Account(null,"hunghx", BCrypt.hashpw("123456",BCrypt.gensalt(5)),"Hồ Xuân Hùng","0949838674","HCM",new HashSet<>());
-        acc1.getRoles().add(admin);
-        acc1.getRoles().add(pm);
-        acc1.getRoles().add(user);
-
-        accountService.save(acc1);
+//        Role admin  = new Role(null, RoleName.ROLE_ADMIN);
+//        Role pm  = new Role(null, RoleName.ROLE_PM);
+//        Role user  = new Role(null, RoleName.ROLE_USER);
+//
+//        Account acc1 = new Account(null,"hunghx", BCrypt.hashpw("123456",BCrypt.gensalt(5)),"Hồ Xuân Hùng","0949838674","HCM",new HashSet<>());
+//        acc1.getRoles().add(admin);
+//        acc1.getRoles().add(pm);
+//        acc1.getRoles().add(user);
+//
+//        accountService.save(acc1);
         return "success";
     }
     @PostMapping("/auth/sign-in")

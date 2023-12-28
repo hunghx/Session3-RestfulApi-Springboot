@@ -9,7 +9,8 @@ import ra.academy.service.IStudentService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api.myservice.com/v1/student")
+@RequestMapping("/api.myservice.com/v1/students")
+@CrossOrigin("*")
 public class StudentController {
     private final IStudentService studentService;
     @GetMapping
@@ -26,8 +27,8 @@ public class StudentController {
         return new ResponseEntity<>(studentService.save(student), HttpStatus.CREATED);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Student student,@PathVariable String id){
-        student.setStudentId(id);
+    public ResponseEntity<?> update(@RequestBody Student student,@PathVariable Long id){
+        student.setId(id);
         return new ResponseEntity<>(studentService.save(student), HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")
